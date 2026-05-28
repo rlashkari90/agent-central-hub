@@ -1,0 +1,14 @@
+{
+  "name": "agent-central-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Agent Central Hub full-stack website",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --check app.js && node --check listing-intelligence-core.js && node --check server.js && node listing-intelligence-core.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
