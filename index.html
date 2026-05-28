@@ -1,0 +1,1512 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Agent Central Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="loginView" class="login-shell">
+      <section class="login-art" aria-label="Agent hub overview">
+        <div class="market-card">
+          <img src="assets/agent-hub-preview.svg" alt="Dashboard preview with real estate tools" />
+        </div>
+        <div class="login-copy">
+          <p class="eyebrow">Team operations</p>
+          <h1>Agent Central Hub</h1>
+          <p>One place for coaching resources, daily tools, team announcements, and each agent's own working dashboard.</p>
+        </div>
+      </section>
+
+      <section class="login-panel" aria-labelledby="loginTitle">
+        <div class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true">AC</span>
+          <span>Agent Central</span>
+        </div>
+        <h2 id="loginTitle">Sign in</h2>
+        <p class="muted">Use your team email or continue with Google.</p>
+        <p class="admin-login-hint">Admin demo: admin@llhomesteam.com / admin123</p>
+
+        <form id="loginForm" class="login-form">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="agent@example.com" required />
+
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required />
+
+          <button type="submit" class="primary-btn">
+            <span aria-hidden="true">→</span>
+            Sign in
+          </button>
+        </form>
+
+        <div class="divider"><span>or</span></div>
+
+        <button id="googleLogin" class="secondary-btn" type="button">
+          <span class="google-dot" aria-hidden="true"></span>
+          Continue with Google
+        </button>
+      </section>
+    </main>
+
+    <main id="appView" class="app-shell is-hidden">
+      <aside id="sidebar" class="sidebar" aria-label="Agent menu">
+        <button id="menuToggle" class="icon-btn menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        </button>
+        <div class="agent-block">
+          <div class="avatar" id="agentInitials">AL</div>
+          <div class="agent-meta">
+            <strong id="agentName">Agent Leader</strong>
+            <span>Productivity Team</span>
+          </div>
+        </div>
+        <nav class="side-nav">
+          <a id="openDashboard" href="#" class="nav-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5 10v10h14V10M9 20v-6h6v6" /></svg>
+            <span>Dashboard</span>
+          </a>
+          <a id="open411" href="#411" class="nav-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" /></svg>
+            <span>411</span>
+          </a>
+          <a id="openCalendar" href="#calendar" class="nav-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v4M17 3v4M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1zM8 13h3M13 13h3M8 17h3" /></svg>
+            <span>Calendar</span>
+          </a>
+          <a id="openTraining" href="#training" class="nav-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM8 21h8M12 18v3M10 10l5 3-5 3v-6z" /></svg>
+            <span>Training Vault</span>
+          </a>
+          <a id="openCanva" href="#canva" class="nav-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v14H5zM9 5v14M5 9h14" /></svg>
+            <span>Canva Templates</span>
+          </a>
+          <a id="openChat" href="#chat" class="nav-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4V5zM8 9h8M8 13h5" /></svg>
+            <span>Team Chat</span>
+          </a>
+          <a id="openDirectMail" href="#mailers" class="nav-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 8l8 6 8-6M8 18v3h8v-3" /></svg>
+            <span>Direct Mail</span>
+          </a>
+          <a id="openListingIntel" href="#listing-intelligence" class="nav-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V8l8-5 8 5v12M8 20v-8h8v8M9 7h6M10 15h4" /></svg>
+            <span>Listing Intelligence</span>
+          </a>
+        </nav>
+      </aside>
+
+      <section id="dashboardPage" class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h1>Welcome back, <span id="welcomeName">Agent</span></h1>
+          </div>
+          <div class="dashboard-mode admin-only is-hidden" role="group" aria-label="Dashboard mode">
+            <span>Agent View</span>
+            <label class="mode-switch">
+              <input id="dashboardModeToggle" type="checkbox" />
+              <i></i>
+            </label>
+            <span>Admin View</span>
+          </div>
+          <div class="account-wrap">
+            <button id="accountButton" class="account-button" type="button" aria-haspopup="menu" aria-expanded="false">
+              <span class="avatar compact" id="accountInitials">AL</span>
+              <span id="accountLabel">Account</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5" /></svg>
+            </button>
+            <div id="accountMenu" class="account-menu" role="menu">
+              <button id="openProfileInfo" type="button" role="menuitem">Profile info</button>
+              <button id="openAccountSettings" type="button" role="menuitem">Settings</button>
+              <button id="openPasswordSettings" type="button" role="menuitem">Password</button>
+              <button id="signOut" type="button" role="menuitem" class="danger">Sign out</button>
+            </div>
+          </div>
+        </header>
+
+        <section class="announcement-panel agent-dashboard-section" aria-labelledby="announcementTitle">
+          <div>
+            <p class="eyebrow">Announcements</p>
+            <h2 id="announcementTitle">This week's focus</h2>
+          </div>
+          <p>New listing presentation templates are live. Please review the buyer consultation update before Friday's coaching call.</p>
+          <div id="announcementAttachment" class="announcement-attachment"></div>
+          <time datetime="2026-05-06">Posted May 6, 2026</time>
+          <div class="announcement-carousel-controls">
+            <button id="previousAnnouncement" type="button" aria-label="Previous announcement">‹</button>
+            <span id="announcementCarouselCount">1 / 1</span>
+            <button id="nextAnnouncement" type="button" aria-label="Next announcement">›</button>
+          </div>
+        </section>
+
+        <section class="win-loss-panel agent-dashboard-section" aria-labelledby="winLossTitle">
+          <div class="win-loss-header">
+            <div>
+              <p class="eyebrow">48 hour board</p>
+              <h2 id="winLossTitle">Wins & Losses</h2>
+            </div>
+            <div class="win-loss-actions">
+              <button id="addWin" class="primary-btn small" type="button">Add win</button>
+              <button id="addLoss" class="secondary-btn small" type="button">Add loss</button>
+              <button id="generateWinLossReport" class="secondary-btn small" type="button">Generate report</button>
+              <button id="toggleWinLossPanel" class="icon-btn win-loss-toggle" type="button" aria-label="Minimize wins and losses" aria-expanded="true">−</button>
+            </div>
+          </div>
+          <div id="winLossTiles" class="win-loss-tiles">
+            <article class="win-loss-tile">
+              <h3>Wins</h3>
+              <div id="winsList" class="win-loss-list"></div>
+            </article>
+            <article class="win-loss-tile loss">
+              <h3>Losses</h3>
+              <div id="lossesList" class="win-loss-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="admin-zone agent-dashboard-section" aria-label="Team app tiles">
+          <div class="admin-tile-toolbar admin-only is-hidden">
+            <button id="openAdminTileModal" class="primary-btn small" type="button">
+              <span aria-hidden="true">+</span>
+              Add tile
+            </button>
+          </div>
+          <div id="teamTileGrid" class="admin-grid">
+            <a id="open411Tile" class="tool-tile admin-tile" href="#411" data-dashboard-tile="411">
+              <button class="tile-edit admin-only is-hidden" type="button" aria-label="Edit 411 tile">Edit</button>
+              <button class="tile-delete admin-only is-hidden" type="button" aria-label="Delete 411 tile">Delete</button>
+              <img src="assets/worksheet-411.svg" alt="" />
+              <span>411</span>
+              <small>Accountability starts here</small>
+            </a>
+            <a class="tool-tile admin-tile" href="https://www.lofty.com" target="_blank" rel="noreferrer" data-dashboard-tile="crm">
+              <button class="tile-edit admin-only is-hidden" type="button" aria-label="Edit CRM tile">Edit</button>
+              <button class="tile-delete admin-only is-hidden" type="button" aria-label="Delete CRM tile">Delete</button>
+              <img src="assets/crm.svg" alt="" />
+              <span>CRM</span>
+              <small>Database and follow-up</small>
+            </a>
+            <a class="tool-tile admin-tile" href="#" data-dashboard-tile="scripts">
+              <button class="tile-edit admin-only is-hidden" type="button" aria-label="Edit Scripts tile">Edit</button>
+              <button class="tile-delete admin-only is-hidden" type="button" aria-label="Delete Scripts tile">Delete</button>
+              <img src="assets/scripts.svg" alt="" />
+              <span>Scripts</span>
+              <small>Calls, texts, objections</small>
+            </a>
+            <a id="openTrainingTile" class="tool-tile admin-tile" href="#training" data-dashboard-tile="training">
+              <button class="tile-edit admin-only is-hidden" type="button" aria-label="Edit Training Vault tile">Edit</button>
+              <button class="tile-delete admin-only is-hidden" type="button" aria-label="Delete Training Vault tile">Delete</button>
+              <img src="assets/training.svg" alt="" />
+              <span>Training Vault</span>
+              <small>Recordings and playbooks</small>
+            </a>
+            <a id="openCalendarTile" class="tool-tile admin-tile" href="#calendar" data-dashboard-tile="calendar">
+              <button class="tile-edit admin-only is-hidden" type="button" aria-label="Edit Calendar tile">Edit</button>
+              <button class="tile-delete admin-only is-hidden" type="button" aria-label="Delete Calendar tile">Delete</button>
+              <img src="assets/calendar-hub.svg" alt="" />
+              <span>Calendar</span>
+              <small>Appointments and follow-up</small>
+            </a>
+            <a id="openChatTile" class="tool-tile admin-tile" href="#chat" data-dashboard-tile="chat">
+              <button class="tile-edit admin-only is-hidden" type="button" aria-label="Edit Team Chat tile">Edit</button>
+              <button class="tile-delete admin-only is-hidden" type="button" aria-label="Delete Team Chat tile">Delete</button>
+              <img src="assets/chat.svg" alt="" />
+              <span>Team Chat</span>
+              <small>Ask questions and share files</small>
+            </a>
+            <a id="openDirectMailTile" class="tool-tile admin-tile" href="#mailers" data-dashboard-tile="direct-mail">
+              <button class="tile-edit admin-only is-hidden" type="button" aria-label="Edit Direct Mail tile">Edit</button>
+              <button class="tile-delete admin-only is-hidden" type="button" aria-label="Delete Direct Mail tile">Delete</button>
+              <img src="assets/direct-mail.svg" alt="" />
+              <span>Direct Mail</span>
+              <small>Order branded mailers</small>
+            </a>
+            <a id="openListingIntelTile" class="tool-tile admin-tile" href="#listing-intelligence" data-dashboard-tile="listing-intelligence">
+              <button class="tile-edit admin-only is-hidden" type="button" aria-label="Edit Listing Intelligence tile">Edit</button>
+              <button class="tile-delete admin-only is-hidden" type="button" aria-label="Delete Listing Intelligence tile">Delete</button>
+              <img src="assets/listing-intelligence.svg" alt="" />
+              <span>Listing Intelligence</span>
+              <small>Walkthrough to MLS-ready copy</small>
+            </a>
+            <article class="tool-tile task-tile" data-dashboard-tile="tasks">
+              <button class="tile-edit admin-only is-hidden" type="button" aria-label="Edit Tasks tile">Edit</button>
+              <button class="tile-delete admin-only is-hidden" type="button" aria-label="Delete Tasks tile">Delete</button>
+              <div class="task-tile-header">
+                <img src="assets/tasks.svg" alt="" />
+                <div>
+                  <span>Tasks</span>
+                  <small>Top priorities</small>
+                </div>
+              </div>
+              <div id="taskTileList" class="task-tile-list"></div>
+              <div class="task-tile-footer">
+                <button id="quickAddTask" class="text-btn" type="button">Add task</button>
+                <a id="openTasksTile" href="#tasks">Full list</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="home-base agent-dashboard-section" aria-labelledby="homeBaseTitle">
+          <div class="section-heading">
+            <div>
+              <h2 id="homeBaseTitle">Links</h2>
+            </div>
+            <button id="openTileModal" class="primary-btn small" type="button">
+              <span aria-hidden="true">+</span>
+              Add tile
+            </button>
+          </div>
+          <div id="homeTiles" class="home-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="adminDashboardView" class="admin-dashboard-view is-hidden" aria-labelledby="adminDashboardTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Administrator</p>
+              <h2 id="adminDashboardTitle">User overview</h2>
+            </div>
+            <button id="openInviteUser" class="primary-btn small" type="button">
+              <span aria-hidden="true">+</span>
+              Invite user
+            </button>
+          </div>
+          <div class="admin-stat-grid">
+            <article class="user-stat-card active" data-user-filter="all">
+              <span id="totalUsers">0</span>
+              <small>Number of users</small>
+            </article>
+            <article class="user-stat-card" data-user-filter="active">
+              <span id="activeUsers">0</span>
+              <small>Active last 24 hours</small>
+            </article>
+            <article class="user-stat-card" data-user-filter="inactive">
+              <span id="inactiveUsers">0</span>
+              <small>Have not logged in</small>
+            </article>
+            <article class="user-stat-card" data-user-filter="listing">
+              <span id="listingWalkthroughUsers">0</span>
+              <small>Use listing walkthrough</small>
+            </article>
+          </div>
+          <div id="adminUserPanel" class="admin-user-panel">
+            <div class="section-heading compact-heading">
+              <h3 id="userListTitle">All users</h3>
+              <button id="toggleUserList" class="secondary-btn small" type="button" aria-expanded="true">Minimize</button>
+            </div>
+            <div id="inactiveUserList" class="inactive-user-list admin-user-list-body"></div>
+          </div>
+          <div id="adminAnnouncementPanel" class="admin-announcement-panel collapsed">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Announcements</p>
+                <h3>Announcement manager</h3>
+              </div>
+              <div class="announcement-manager-actions">
+                <button id="toggleAnnouncementManager" class="secondary-btn small" type="button" aria-expanded="false">Expand</button>
+                <button id="openAnnouncementEditor" class="primary-btn small" type="button">
+                  <span aria-hidden="true">+</span>
+                  Add announcement
+                </button>
+              </div>
+            </div>
+            <div id="announcementManagerBody" class="announcement-manager-body">
+              <div class="admin-tabs" role="tablist" aria-label="Announcement status">
+                <button id="activeAnnouncementTab" class="active" type="button">Active</button>
+                <button id="archiveAnnouncementTab" type="button">Archive</button>
+              </div>
+              <div id="announcementAdminList" class="announcement-admin-list"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="worksheetPage" class="workspace worksheet-workspace is-hidden">
+        <header class="topbar no-print">
+          <div>
+            <p class="eyebrow worksheet-page-title">My 411 Document</p>
+          </div>
+          <div class="worksheet-actions">
+            <button id="print411" class="secondary-btn" type="button">Print my 411</button>
+            <button id="submit411" class="primary-btn" type="button">Submit my weekly 411</button>
+          </div>
+        </header>
+
+        <section id="worksheet411" class="worksheet-sheet" aria-label="4-1-1 Action Goal Worksheet">
+          <div class="worksheet-title">
+            <div>
+              <h2><span id="worksheetAgentName">Agent Name</span> 4-1-1</h2>
+              <div class="worksheet-meta">
+                <label>Week of
+                  <input id="weekOfSelect" type="date" data-save="weekOf" />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="goals-grid">
+            <section class="goal-panel">
+              <div class="goal-heading">
+                <h3><span>Annual</span> Goals</h3>
+                <label>Year
+                  <select data-save="annualYear">
+                    <option>2026</option>
+                    <option>2027</option>
+                    <option>2028</option>
+                    <option>2029</option>
+                    <option>2030</option>
+                    <option>2031</option>
+                    <option>2032</option>
+                    <option>2033</option>
+                    <option>2034</option>
+                    <option>2035</option>
+                    <option>2036</option>
+                  </select>
+                </label>
+              </div>
+              <div class="goal-lines">
+                <label><span class="goal-action">Go on</span><input list="bigGoalNumbers" data-save="annualBuyerAppointments" /><span>Buyer Appointments</span></label>
+                <label><span class="goal-action">Go on</span><input list="bigGoalNumbers" data-save="annualListingAppointments" /><span>Listing Appointments</span></label>
+                <label><span class="goal-action">Sign up</span><input list="bigGoalNumbers" data-save="annualBuyers" /><span>Buyers</span></label>
+                <label><span class="goal-action">Sign up</span><input list="bigGoalNumbers" data-save="annualListings" /><span>Listings</span></label>
+                <label><span class="goal-action">Close</span><input list="bigGoalNumbers" data-save="annualCloseBuyers" /><span>Buyers</span></label>
+                <label><span class="goal-action">Close</span><input list="bigGoalNumbers" data-save="annualCloseListings" /><span>Listings</span></label>
+              </div>
+            </section>
+
+            <section class="goal-panel">
+              <div class="goal-heading">
+                <h3><span>Monthly</span> Goals</h3>
+                <label>Month of
+                  <select data-save="monthlyGoalMonth" class="month-options"></select>
+                </label>
+              </div>
+              <div class="goal-lines">
+                <label><span class="goal-action">Go on</span><input list="smallGoalNumbers" data-save="monthlyBuyerAppointments" /><span>Buyer Appointments</span></label>
+                <label><span class="goal-action">Go on</span><input list="smallGoalNumbers" data-save="monthlyListingAppointments" /><span>Listing Appointments</span></label>
+                <label><span class="goal-action">Sign up</span><input list="smallGoalNumbers" data-save="monthlyBuyers" /><span>Buyers</span></label>
+                <label><span class="goal-action">Sign up</span><input list="smallGoalNumbers" data-save="monthlyListings" /><span>Listings</span></label>
+                <label><span class="goal-action">Close</span><input list="smallGoalNumbers" data-save="monthlyCloseBuyers" /><span>Buyers</span></label>
+                <label><span class="goal-action">Close</span><input list="smallGoalNumbers" data-save="monthlyCloseListings" /><span>Listings</span></label>
+                <label><span class="goal-action">Net $</span><input list="moneyGoalNumbers" data-save="monthlyNet" /><span></span></label>
+                <label><span class="goal-action">Sales Volume $</span><input list="volumeGoalNumbers" data-save="monthlyVolume" /><span></span></label>
+              </div>
+            </section>
+          </div>
+
+          <section class="weekly-section" aria-labelledby="weeklyTitle">
+            <h3 id="weeklyTitle"><span>Weekly</span> Goals</h3>
+            <div class="weekly-grid">
+              <article class="weekly-card">
+                <h4>Week 1</h4>
+                <div class="weekly-bullets" contenteditable="true" role="textbox" aria-label="Week 1 goals" data-save="week1"></div>
+              </article>
+              <article class="weekly-card">
+                <h4>Week 2</h4>
+                <div class="weekly-bullets" contenteditable="true" role="textbox" aria-label="Week 2 goals" data-save="week2"></div>
+              </article>
+              <article class="weekly-card">
+                <h4>Week 3</h4>
+                <div class="weekly-bullets" contenteditable="true" role="textbox" aria-label="Week 3 goals" data-save="week3"></div>
+              </article>
+              <article class="weekly-card">
+                <h4>Week 4</h4>
+                <div class="weekly-bullets" contenteditable="true" role="textbox" aria-label="Week 4 goals" data-save="week4"></div>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <datalist id="smallGoalNumbers">
+          <option value="1"></option><option value="2"></option><option value="3"></option><option value="4"></option><option value="5"></option><option value="6"></option><option value="8"></option><option value="10"></option>
+        </datalist>
+        <datalist id="bigGoalNumbers">
+          <option value="5"></option><option value="10"></option><option value="15"></option><option value="20"></option><option value="25"></option><option value="30"></option><option value="40"></option><option value="50"></option><option value="75"></option><option value="100"></option>
+        </datalist>
+        <datalist id="moneyGoalNumbers">
+          <option value="25000"></option><option value="50000"></option><option value="75000"></option><option value="95550"></option><option value="100000"></option><option value="150000"></option><option value="250000"></option>
+        </datalist>
+        <datalist id="volumeGoalNumbers">
+          <option value="1000000"></option><option value="2500000"></option><option value="5880000"></option><option value="7500000"></option><option value="10000000"></option><option value="15000000"></option>
+        </datalist>
+      </section>
+
+      <section id="calendarPage" class="workspace calendar-workspace is-hidden">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow calendar-page-title">Calendar</p>
+            <h1>Appointments</h1>
+          </div>
+          <button id="newAppointment" class="primary-btn" type="button">
+            <span aria-hidden="true">+</span>
+            New appointment
+          </button>
+        </header>
+
+        <section class="calendar-connect" aria-label="Calendar connection">
+          <div>
+            <p class="eyebrow">Connected calendar</p>
+            <h2 id="calendarProviderLabel">Not connected</h2>
+            <p id="calendarConnectNote">Choose a calendar provider to connect this hub with your appointments.</p>
+          </div>
+          <div class="provider-buttons">
+            <button class="secondary-btn provider-btn" type="button" data-provider="Google Calendar">Google</button>
+            <button class="secondary-btn provider-btn" type="button" data-provider="iCal">iCal</button>
+            <button class="secondary-btn provider-btn" type="button" data-provider="Hotmail Calendar">Hotmail</button>
+          </div>
+        </section>
+
+        <section class="calendar-board" aria-labelledby="calendarTitle">
+          <div class="calendar-header">
+            <div>
+              <p class="eyebrow">Month view</p>
+              <h2 id="calendarTitle">May 2026</h2>
+            </div>
+            <div class="calendar-legend">
+              <span><i></i> Appointment</span>
+              <span><i></i> Follow-up</span>
+            </div>
+          </div>
+          <div id="calendarGrid" class="calendar-grid" aria-label="Calendar month"></div>
+        </section>
+
+        <section class="today-agenda" aria-labelledby="todayAgendaTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Today</p>
+              <h2 id="todayAgendaTitle">Upcoming appointments</h2>
+            </div>
+          </div>
+          <div id="agendaList" class="agenda-list"></div>
+        </section>
+      </section>
+
+      <section id="tasksPage" class="workspace tasks-workspace is-hidden">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Tasks</p>
+            <h1>To-do list</h1>
+          </div>
+          <button id="newTask" class="primary-btn" type="button">
+            <span aria-hidden="true">+</span>
+            New task
+          </button>
+        </header>
+
+        <section class="tasks-board" aria-labelledby="tasksTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Drag to reorder</p>
+              <h2 id="tasksTitle">Open tasks</h2>
+            </div>
+          </div>
+          <div id="fullTaskList" class="full-task-list"></div>
+        </section>
+      </section>
+
+      <section id="canvaPage" class="workspace canva-workspace is-hidden">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Canva Templates</p>
+            <h1>Brand design workspace</h1>
+          </div>
+          <button id="connectCanva" class="primary-btn" type="button">Connect Canva</button>
+        </header>
+
+        <section class="canva-connect-panel" aria-label="Canva connection">
+          <div>
+            <p class="eyebrow">Canva account</p>
+            <h2 id="canvaStatus">Not connected</h2>
+            <p id="canvaStatusNote">Connect your Canva account to browse team templates and launch the Canva editor from inside the hub.</p>
+          </div>
+          <button id="disconnectCanva" class="secondary-btn is-hidden" type="button">Disconnect</button>
+        </section>
+
+        <section class="canva-category-library" aria-labelledby="canvaTemplatesTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Templates</p>
+              <h2 id="canvaTemplatesTitle">Team template library</h2>
+            </div>
+          </div>
+          <div id="canvaCategorySections" class="canva-category-sections"></div>
+        </section>
+      </section>
+
+      <section id="chatPage" class="workspace chat-workspace is-hidden">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Team Chat</p>
+            <h1>Collaborate and ask for help</h1>
+          </div>
+        </header>
+
+        <section class="chat-layout" aria-label="Team collaboration room">
+          <aside class="chat-room-panel">
+            <p class="eyebrow">Rooms</p>
+            <button class="chat-room active" type="button" data-chat-room="general" data-chat-room-title="General Help">
+              <strong>General Help</strong>
+              <small>Questions, wins, and quick assists</small>
+            </button>
+            <button class="chat-room" type="button" data-chat-room="contracts" data-chat-room-title="Contracts">
+              <strong>Contracts</strong>
+              <small>Offer, lease, and paperwork support</small>
+            </button>
+            <button class="chat-room" type="button" data-chat-room="marketing" data-chat-room-title="Marketing">
+              <strong>Marketing</strong>
+              <small>Canva, social, and listing launch</small>
+            </button>
+          </aside>
+
+          <section class="chat-panel" aria-labelledby="chatRoomTitle">
+            <div class="chat-panel-header">
+              <div>
+                <p class="eyebrow">Live room</p>
+                <h2 id="chatRoomTitle">General Help</h2>
+              </div>
+              <span id="chatMessageCount">0 messages</span>
+            </div>
+            <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+            <form id="chatForm" class="chat-composer">
+              <textarea id="chatMessage" placeholder="Ask for help, share an update, or collaborate with the team"></textarea>
+              <div class="chat-attachment-row">
+                <label class="secondary-btn small" for="chatAttachment">Attach files</label>
+                <input id="chatAttachment" type="file" multiple accept="image/*,video/*,.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt" />
+                <button id="clearChatAttachment" class="secondary-btn small" type="button">Clear files</button>
+                <span id="chatAttachmentSummary">No files attached</span>
+              </div>
+              <div id="chatAttachmentPreview" class="chat-attachment-preview"></div>
+              <button class="primary-btn" type="submit">Send message</button>
+            </form>
+          </section>
+        </section>
+      </section>
+
+      <section id="directMailPage" class="workspace direct-mail-workspace is-hidden">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Direct Mail</p>
+            <h1>Direct Mail Studio</h1>
+          </div>
+          <button id="openMailerSettings" class="secondary-btn admin-only is-hidden" type="button">Integration settings</button>
+        </header>
+
+        <section class="mail-studio-grid">
+          <form id="mailerOrderForm" class="mail-order-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Order mailers</p>
+                <h2>Create a campaign</h2>
+              </div>
+              <span id="mailerApiStatus" class="connection-pill">Demo mode</span>
+            </div>
+
+            <div class="mail-form-grid">
+              <label for="mailerCampaignName">Campaign name</label>
+              <input id="mailerCampaignName" type="text" placeholder="Just listed neighborhood mailer" required />
+
+              <label for="mailerProduct">Mailer type</label>
+              <select id="mailerProduct" required>
+                <option value="postcard">Postcard</option>
+                <option value="letter">Letter</option>
+                <option value="snap-apart">Snap apart</option>
+              </select>
+
+              <label for="mailerTemplate">Template</label>
+              <select id="mailerTemplate" required>
+                <option value="just-listed">Just Listed</option>
+                <option value="just-sold">Just Sold</option>
+                <option value="open-house">Open House</option>
+                <option value="home-value">Home Value Offer</option>
+              </select>
+
+              <label for="mailerQuantity">Quantity</label>
+              <input id="mailerQuantity" type="number" min="1" value="100" required />
+
+              <label for="mailerScheduleDate">Mail date</label>
+              <input id="mailerScheduleDate" type="date" required />
+
+              <label for="mailerListSource">Mailing list</label>
+              <select id="mailerListSource" required>
+                <option value="upload">Upload recipient list</option>
+                <option value="radius">Radius around listing</option>
+                <option value="zip">ZIP code targeting</option>
+              </select>
+
+              <label for="mailerAddress">Target property or ZIP</label>
+              <input id="mailerAddress" type="text" placeholder="123 Main St, Dallas, TX or 75201" required />
+
+              <label for="mailerListFile">Recipient file</label>
+              <input id="mailerListFile" type="file" accept=".csv,.xlsx,.xls" />
+            </div>
+
+            <label for="mailerMessage">Personalization notes</label>
+            <textarea id="mailerMessage" class="dialog-textarea" placeholder="Headline, offer, agent phone, QR/link, or special instructions"></textarea>
+
+            <div class="dialog-actions">
+              <button id="generateMailerProof" class="secondary-btn" type="button">Generate proof</button>
+              <button class="primary-btn" type="submit">Submit order</button>
+            </div>
+          </form>
+
+          <aside class="mail-summary-panel">
+            <div>
+              <p class="eyebrow">Proof</p>
+              <h2>Preview and estimate</h2>
+            </div>
+            <div id="mailerProofPreview" class="mailer-proof-preview">
+              <strong>Select your campaign options</strong>
+              <p>Generate a proof before submitting the order.</p>
+            </div>
+            <div class="mail-estimate">
+              <span>Estimated pieces</span>
+              <strong id="mailerEstimatedPieces">100</strong>
+              <span>Estimated total</span>
+              <strong id="mailerEstimatedTotal">$75.00</strong>
+            </div>
+          </aside>
+        </section>
+
+        <section class="mail-history-panel" aria-labelledby="mailerHistoryTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Orders</p>
+              <h2 id="mailerHistoryTitle">Recent direct mail orders</h2>
+            </div>
+          </div>
+          <div id="mailerOrderList" class="mailer-order-list"></div>
+        </section>
+      </section>
+
+      <section id="listingIntelPage" class="workspace listing-intel-workspace is-hidden">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Listing Intelligence</p>
+            <h1>Property walkthrough workspace</h1>
+          </div>
+          <div class="listing-top-actions">
+            <button id="newWalkthrough" class="primary-btn" type="button">
+              <span aria-hidden="true">+</span>
+              New walkthrough
+            </button>
+            <button id="editPreviousWalkthroughs" class="secondary-btn" type="button">Edit previous walkthroughs</button>
+          </div>
+        </header>
+
+        <section class="listing-intel-shell">
+          <div class="listing-main-column">
+            <section class="listing-tool-strip" aria-label="Listing tools">
+              <button id="openCopyPanel" class="secondary-btn" type="button">Generate copy</button>
+              <button id="openVerificationPanel" class="secondary-btn" type="button">Verification checklist</button>
+            </section>
+
+            <section class="listing-panel" aria-labelledby="walkthroughOverviewTitle">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Step 1</p>
+                  <h2 id="walkthroughOverviewTitle">Property overview</h2>
+                </div>
+                <span id="walkthroughSaveStatus" class="connection-pill">Saved locally</span>
+              </div>
+              <div class="listing-form-grid">
+                <label for="listingPropertyName">Property name</label>
+                <input id="listingPropertyName" type="text" placeholder="123 Main Street" />
+                <label for="listingAddress">Address</label>
+                <input id="listingAddress" type="text" placeholder="Street, city, state" />
+                <label for="listingOverviewNotes">Overview notes</label>
+                <textarea id="listingOverviewNotes" class="dialog-textarea" placeholder="Seller-provided highlights, known updates, showing notes, and positioning"></textarea>
+              </div>
+            </section>
+
+            <section class="listing-panel" aria-labelledby="systemTrackerTitle">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Step 2</p>
+                  <h2 id="systemTrackerTitle">Major systems tracker</h2>
+                </div>
+                <div class="system-edit-actions">
+                  <button id="toggleSystemEdit" class="secondary-btn small" type="button">Edit</button>
+                  <button id="deleteSelectedSystems" class="secondary-btn small is-hidden" type="button">Delete selected</button>
+                </div>
+              </div>
+              <div id="systemsTracker" class="systems-tracker"></div>
+              <button id="addSystemItem" class="secondary-btn small add-system-footer" type="button">Add another item</button>
+            </section>
+
+            <section class="listing-panel" aria-labelledby="roomCardsTitle">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Step 3</p>
+                  <h2 id="roomCardsTitle">Room cards</h2>
+                </div>
+                <div class="room-edit-actions">
+                  <button id="toggleRoomEdit" class="secondary-btn small" type="button">Edit</button>
+                  <button id="deleteSelectedRooms" class="secondary-btn small is-hidden" type="button">Delete selected</button>
+                  <button id="newRoom" class="secondary-btn small" type="button">New room</button>
+                </div>
+              </div>
+              <form id="roomForm" class="room-form is-hidden">
+                <input id="roomName" type="text" placeholder="Kitchen, primary bedroom, exterior" required />
+                <input id="roomNotes" type="text" placeholder="Room notes or seller context" />
+                <input id="roomPhotoUpload" type="file" accept="image/*" multiple />
+                <button class="primary-btn small" type="submit">Add room</button>
+              </form>
+              <div id="listingErrorState" class="listing-error is-hidden" role="alert"></div>
+              <div id="roomCards" class="room-card-grid"></div>
+            </section>
+
+            <section class="listing-panel" aria-labelledby="presentationNotesTitle">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Step 4</p>
+                  <h2 id="presentationNotesTitle">Listing presentation follow-up</h2>
+                </div>
+              </div>
+              <div class="listing-form-grid">
+                <label for="listingPresentationNotes">Presentation notes</label>
+                <textarea id="listingPresentationNotes" class="dialog-textarea" placeholder="How did the presentation go? Add objections, seller feedback, next steps, and follow-up notes."></textarea>
+                <label for="prospectiveListDate">Prospective list date</label>
+                <input id="prospectiveListDate" type="date" />
+              </div>
+              <div class="listing-checkbox-row">
+                <label><input id="contractsSigned" type="checkbox" /> Contracts signed</label>
+                <label><input id="draftAndSendContracts" type="checkbox" /> Draft and send contracts</label>
+              </div>
+              <div class="listing-follow-up-block">
+                <label>Follow up via</label>
+                <div class="listing-checkbox-row">
+                  <label><input id="followUpPhone" type="checkbox" /> Phone</label>
+                  <label><input id="followUpEmail" type="checkbox" /> Email</label>
+                  <label><input id="followUpText" type="checkbox" /> Text</label>
+                </div>
+                <label for="followUpDate">Follow-up date</label>
+                <input id="followUpDate" type="date" />
+              </div>
+            </section>
+
+            <button id="submitListingWalkthrough" class="primary-btn listing-submit" type="button">Submit walkthrough</button>
+          </div>
+        </section>
+      </section>
+
+      <section id="trainingPage" class="workspace training-workspace is-hidden">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Training Vault</p>
+            <h1>Lessons and playbooks</h1>
+          </div>
+        </header>
+
+        <section class="training-categories" aria-labelledby="trainingCategoriesTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Categories</p>
+              <h2 id="trainingCategoriesTitle">Choose a track</h2>
+            </div>
+            <div class="admin-training-actions admin-only is-hidden">
+              <button id="openTrackEditor" class="secondary-btn small" type="button">Manage tracks</button>
+              <button id="openTrainingUpload" class="primary-btn small" type="button">
+                <span aria-hidden="true">+</span>
+                Upload content
+              </button>
+            </div>
+          </div>
+          <div id="trainingCategoryGrid" class="training-category-grid"></div>
+        </section>
+
+        <section class="training-lessons" aria-labelledby="trainingLessonsTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Lessons</p>
+              <h2 id="trainingLessonsTitle">Buyer</h2>
+            </div>
+          </div>
+          <div id="trainingLessonGrid" class="training-lesson-grid"></div>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="tileDialog" class="tile-dialog">
+      <form id="tileForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Customize Home Base</p>
+            <h2>Add a tile</h2>
+          </div>
+          <button id="closeTileModal" class="icon-btn" type="button" aria-label="Close dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <label for="curatedTile">Curated app</label>
+        <select id="curatedTile" name="curatedTile">
+          <option value="">Custom tile</option>
+          <option value="command">Command</option>
+          <option value="mls">MLS</option>
+          <option value="calendar">Google Calendar</option>
+          <option value="drive">Google Drive</option>
+          <option value="dotloop">Dotloop</option>
+        </select>
+
+        <label for="tileName">Tile name</label>
+        <input id="tileName" name="tileName" type="text" placeholder="Listing checklist" required />
+
+        <label for="tileLink">Link</label>
+        <input id="tileLink" name="tileLink" type="url" placeholder="https://example.com" required />
+
+        <label for="tileImage">Image URL or asset path</label>
+        <input id="tileImage" name="tileImage" type="text" placeholder="Optional custom image link" />
+
+        <div class="dialog-actions">
+          <button id="cancelTile" class="secondary-btn" type="button">Cancel</button>
+          <button class="primary-btn" type="submit">Add to Home Base</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="adminTileDialog" class="tile-dialog">
+      <form id="adminTileForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Administrator</p>
+            <h2>Add dashboard tile</h2>
+          </div>
+          <button id="closeAdminTileModal" class="icon-btn" type="button" aria-label="Close dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <label for="adminTileType">Tile</label>
+        <select id="adminTileType">
+          <option value="411">411</option>
+          <option value="crm">CRM</option>
+          <option value="scripts">Scripts</option>
+          <option value="training">Training Vault</option>
+          <option value="calendar">Calendar</option>
+          <option value="chat">Team Chat</option>
+          <option value="direct-mail">Direct Mail</option>
+          <option value="listing-intelligence">Listing Intelligence</option>
+          <option value="tasks">Tasks</option>
+          <option value="custom">Custom tile</option>
+        </select>
+
+        <div id="customAdminTileFields" class="custom-admin-tile-fields is-hidden">
+          <label for="adminTileTitle">Tile title</label>
+          <input id="adminTileTitle" type="text" placeholder="Resource hub" />
+
+          <label for="adminTileSubtitle">Tile subtext</label>
+          <input id="adminTileSubtitle" type="text" placeholder="Helpful team resource" />
+
+          <label for="adminTileUrl">Link URL</label>
+          <input id="adminTileUrl" type="url" placeholder="https://example.com" />
+
+          <label for="adminTileImage">Image URL or asset path</label>
+          <input id="adminTileImage" type="text" placeholder="assets/custom.svg" />
+        </div>
+
+        <div class="dialog-actions">
+          <button id="cancelAdminTile" class="secondary-btn" type="button">Cancel</button>
+          <button id="saveAdminTile" class="primary-btn" type="submit">Add tile</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="appointmentDialog" class="tile-dialog">
+      <form id="appointmentForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Calendar</p>
+            <h2>New appointment</h2>
+          </div>
+          <button id="closeAppointmentModal" class="icon-btn" type="button" aria-label="Close dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <label for="appointmentTitle">Title</label>
+        <input id="appointmentTitle" name="appointmentTitle" type="text" placeholder="Buyer consultation" required />
+
+        <label for="appointmentDate">Date</label>
+        <input id="appointmentDate" name="appointmentDate" type="date" required />
+
+        <label for="appointmentTime">Time</label>
+        <input id="appointmentTime" name="appointmentTime" type="time" required />
+
+        <label for="appointmentNotes">Notes</label>
+        <input id="appointmentNotes" name="appointmentNotes" type="text" placeholder="Client name, location, or prep notes" />
+
+        <div class="dialog-actions">
+          <button id="cancelAppointment" class="secondary-btn" type="button">Cancel</button>
+          <button class="primary-btn" type="submit">Add appointment</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="taskDialog" class="tile-dialog">
+      <form id="taskForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Task</p>
+            <h2 id="taskDialogTitle">New task</h2>
+          </div>
+          <button id="closeTaskModal" class="icon-btn" type="button" aria-label="Close dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <label for="taskTitle">Title</label>
+        <input id="taskTitle" name="taskTitle" type="text" placeholder="Follow up with buyer lead" required />
+
+        <label for="taskDueDate">Date due</label>
+        <input id="taskDueDate" name="taskDueDate" type="date" required />
+
+        <label for="taskUrgency">Urgency</label>
+        <select id="taskUrgency" name="taskUrgency" required>
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+
+        <label for="taskNotes">Notes</label>
+        <textarea id="taskNotes" name="taskNotes" class="dialog-textarea" placeholder="Add context, links, or next steps"></textarea>
+
+        <label class="switch-row" for="taskAddToCalendar">
+          <span>Add to calendar</span>
+          <input id="taskAddToCalendar" name="taskAddToCalendar" type="checkbox" />
+        </label>
+
+        <div class="dialog-actions">
+          <button id="cancelTask" class="secondary-btn" type="button">Cancel</button>
+          <button id="saveTaskButton" class="primary-btn" type="submit">Add task</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="trainingUploadDialog" class="tile-dialog">
+      <form id="trainingUploadForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Administrator</p>
+            <h2 id="trainingUploadTitle">Upload training content</h2>
+          </div>
+          <button id="closeTrainingUpload" class="icon-btn" type="button" aria-label="Close dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <label for="trainingCategory">Category</label>
+        <select id="trainingCategory" required>
+          <option value="buyer">Buyer</option>
+          <option value="seller">Seller</option>
+          <option value="contract">Contract</option>
+          <option value="lease">Lease</option>
+          <option value="business">My Business</option>
+        </select>
+
+        <label for="trainingTitle">Lesson title</label>
+        <input id="trainingTitle" type="text" placeholder="Buyer consultation pack" required />
+
+        <label for="trainingDetail">Lesson overview</label>
+        <textarea id="trainingDetail" class="dialog-textarea" placeholder="Describe the full lesson pack" required></textarea>
+
+        <fieldset class="audience-fieldset">
+          <legend>Include for</legend>
+          <label><input id="trainingAudienceTeam" type="checkbox" checked /> Team members</label>
+          <label><input id="trainingAudienceMentee" type="checkbox" checked /> Mentees</label>
+        </fieldset>
+
+        <div class="chapter-editor-heading">
+          <label>Chapters</label>
+          <button id="addTrainingChapter" class="secondary-btn" type="button">+ Add chapter</button>
+        </div>
+        <div id="trainingChapterEditor" class="chapter-editor-list"></div>
+
+        <div class="dialog-actions">
+          <button id="cancelTrainingUpload" class="secondary-btn" type="button">Cancel</button>
+          <button id="saveTrainingUpload" class="primary-btn" type="submit">Add to vault</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="trackDialog" class="tile-dialog">
+      <form id="trackForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Administrator</p>
+            <h2 id="trackDialogTitle">Add track</h2>
+          </div>
+          <button id="closeTrackModal" class="icon-btn" type="button" aria-label="Close dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <label for="trackSelect">Existing track</label>
+        <select id="trackSelect"></select>
+
+        <label for="trackTitle">Track name</label>
+        <input id="trackTitle" type="text" placeholder="Recruiting" required />
+
+        <label for="trackSummary">Track summary</label>
+        <textarea id="trackSummary" class="dialog-textarea" placeholder="Describe what this track covers" required></textarea>
+
+        <label for="trackCover">Cover image</label>
+        <input id="trackCover" type="file" accept="image/*" />
+        <button id="clearTrackCover" class="secondary-btn clear-upload" type="button">Clear image</button>
+
+        <div class="dialog-actions">
+          <button id="newTrackMode" class="secondary-btn" type="button">+ New track</button>
+          <button id="cancelTrack" class="secondary-btn" type="button">Cancel</button>
+          <button id="saveTrack" class="primary-btn" type="submit">Save track</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="inviteDialog" class="tile-dialog">
+      <form id="inviteForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Administrator</p>
+            <h2>Invite user</h2>
+          </div>
+          <button id="closeInviteModal" class="icon-btn" type="button" aria-label="Close dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <label for="inviteMode">Invite type</label>
+        <select id="inviteMode">
+          <option value="link">Send invite link to email</option>
+          <option value="manual">Manually create email and password</option>
+        </select>
+
+        <label for="inviteMemberType">Account type</label>
+        <select id="inviteMemberType">
+          <option value="team">Team member</option>
+          <option value="mentee">Mentee</option>
+          <option value="upline">Upline agent</option>
+        </select>
+
+        <label for="inviteName">Name</label>
+        <input id="inviteName" type="text" placeholder="Agent name" required />
+
+        <label for="inviteEmail">Email</label>
+        <input id="inviteEmail" type="email" placeholder="agent@example.com" required />
+
+        <label id="invitePasswordLabel" for="invitePassword" class="is-hidden">Password</label>
+        <input id="invitePassword" class="is-hidden" type="password" placeholder="Temporary password" />
+
+        <div class="dialog-actions">
+          <button id="cancelInvite" class="secondary-btn" type="button">Cancel</button>
+          <button id="sendInvite" class="primary-btn" type="submit">Send invite</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="announcementDialog" class="tile-dialog">
+      <form id="announcementForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Administrator</p>
+            <h2 id="announcementDialogTitle">Add announcement</h2>
+          </div>
+          <button id="closeAnnouncementModal" class="icon-btn" type="button" aria-label="Close dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <label for="announcementTitleInput">Title</label>
+        <input id="announcementTitleInput" type="text" placeholder="Weekly focus" required />
+
+        <label for="announcementMessage">Message</label>
+        <textarea id="announcementMessage" class="dialog-textarea" placeholder="Write the announcement or notification" required></textarea>
+
+        <label for="announcementPlacement">Show as</label>
+        <select id="announcementPlacement">
+          <option value="widget">Announcement widget</option>
+          <option value="popup">Pop up</option>
+        </select>
+
+        <label class="notification-toggle-row announcement-option-row">
+          <span>
+            <strong>Email announcement</strong>
+            <small>Create an email draft for users and agents when saved.</small>
+          </span>
+          <span class="toggle-with-state">
+            <input id="announcementEmailAgents" type="checkbox" />
+          </span>
+        </label>
+
+        <label for="announcementRunDate">Run date</label>
+        <input id="announcementRunDate" type="date" required />
+
+        <label for="announcementLink">Attachment link</label>
+        <input id="announcementLink" type="url" placeholder="https://video-or-resource-link.com" />
+
+        <label for="announcementFile">Downloadable document or image</label>
+        <input id="announcementFile" type="file" />
+        <button id="clearAnnouncementFile" class="secondary-btn clear-upload" type="button">Clear upload</button>
+
+        <div class="dialog-actions">
+          <button id="cancelAnnouncement" class="secondary-btn" type="button">Cancel</button>
+          <button id="saveAnnouncement" class="primary-btn" type="submit">Save announcement</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="announcementPopupDialog" class="tile-dialog announcement-popup-dialog">
+      <div class="announcement-popup-card">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Announcement</p>
+            <h2 id="announcementPopupTitle">Announcement</h2>
+          </div>
+          <button id="closeAnnouncementPopup" class="icon-btn" type="button" aria-label="Close announcement">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+        <p id="announcementPopupMessage" class="announcement-popup-message"></p>
+        <div id="announcementPopupAttachment" class="announcement-popup-attachment"></div>
+        <div class="dialog-actions">
+          <button id="dismissAnnouncementPopup" class="primary-btn" type="button">Got it</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="winLossDialog" class="tile-dialog">
+      <form id="winLossForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">48 hour board</p>
+            <h2 id="winLossDialogTitle">Add win</h2>
+          </div>
+          <button id="closeWinLossModal" class="icon-btn" type="button" aria-label="Close dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <input id="winLossType" type="hidden" value="win" />
+
+        <label for="winLossTitleInput">Title</label>
+        <input id="winLossTitleInput" type="text" placeholder="Buyer offer accepted" required />
+
+        <label for="winLossMessage">Details</label>
+        <textarea id="winLossMessage" class="dialog-textarea" placeholder="Share what happened and what the team can learn from it" required></textarea>
+
+        <div class="dialog-actions">
+          <button id="cancelWinLoss" class="secondary-btn" type="button">Cancel</button>
+          <button id="saveWinLoss" class="primary-btn" type="submit">Add to board</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="winLossReportDialog" class="tile-dialog">
+      <form id="winLossReportForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Wins & Losses</p>
+            <h2>Generate report</h2>
+          </div>
+          <button id="closeWinLossReportModal" class="icon-btn" type="button" aria-label="Close dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <label for="winLossReportRange">Report range</label>
+        <select id="winLossReportRange">
+          <option value="1w">1 week</option>
+          <option value="2w">2 weeks</option>
+          <option value="1m">1 month</option>
+          <option value="3m">3 months</option>
+          <option value="6m">6 months</option>
+          <option value="12m">12 months</option>
+          <option value="custom">Custom months</option>
+        </select>
+
+        <label id="customReportMonthsLabel" for="customReportMonths" class="is-hidden">Number of months</label>
+        <input id="customReportMonths" class="is-hidden" type="number" min="1" max="60" value="1" />
+
+        <div id="winLossReportPreview" class="report-preview"></div>
+
+        <div class="dialog-actions">
+          <button id="cancelWinLossReport" class="secondary-btn" type="button">Cancel</button>
+          <button id="downloadWinLossReport" class="primary-btn" type="submit">Download PDF</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="canvaTemplateDialog" class="tile-dialog">
+      <form id="canvaTemplateForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Administrator</p>
+            <h2 id="canvaTemplateDialogTitle">Add Canva template</h2>
+          </div>
+          <button id="closeCanvaTemplateModal" class="icon-btn" type="button" aria-label="Close dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <input id="canvaTemplateCategory" type="hidden" />
+        <input id="canvaTemplateEditingId" type="hidden" />
+
+        <label for="canvaTemplateTitle">Template title</label>
+        <input id="canvaTemplateTitle" type="text" placeholder="Just Listed postcard" required />
+
+        <label for="canvaTemplateUrl">Canva template link</label>
+        <input id="canvaTemplateUrl" type="url" placeholder="https://www.canva.com/design/..." required />
+
+        <label for="canvaTemplateDescription">Short description</label>
+        <input id="canvaTemplateDescription" type="text" placeholder="Farm mailer, listing flyer, or social post" />
+
+        <label for="canvaTemplateImage">Preview image</label>
+        <input id="canvaTemplateImage" type="file" accept="image/*" />
+        <button id="clearCanvaTemplateImage" class="secondary-btn clear-upload" type="button">Clear image</button>
+
+        <div id="canvaTemplateImagePreview" class="upload-preview"></div>
+
+        <fieldset class="audience-fieldset">
+          <legend>Include for</legend>
+          <label><input id="canvaAudienceTeam" type="checkbox" checked /> Team members</label>
+          <label><input id="canvaAudienceMentee" type="checkbox" checked /> Mentees</label>
+        </fieldset>
+
+        <div class="dialog-actions">
+          <button id="cancelCanvaTemplate" class="secondary-btn" type="button">Cancel</button>
+          <button id="saveCanvaTemplate" class="primary-btn" type="submit">Add template</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="copyPanelDialog" class="tile-dialog listing-tool-dialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Approved only</p>
+            <h2>Generate copy</h2>
+          </div>
+          <button id="closeCopyPanel" class="icon-btn" type="button" aria-label="Minimize generate copy">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+        <div class="copy-button-row">
+          <button class="secondary-btn small" type="button" data-copy-format="mls">MLS</button>
+          <button class="secondary-btn small" type="button" data-copy-format="marketing">Marketing</button>
+          <button class="secondary-btn small" type="button" data-copy-format="social">Social</button>
+          <button class="secondary-btn small" type="button" data-copy-format="flyer">Flyer bullets</button>
+        </div>
+        <textarea id="generatedListingCopy" class="generated-copy" readonly placeholder="Approve room features to generate MLS-safe copy."></textarea>
+        <p class="listing-guardrail-note">Copy uses approved features only and avoids unconfirmed exact ages, brands, materials, permits, square footage, remodel status, condition claims, and fair-housing risk language.</p>
+      </form>
+    </dialog>
+
+    <dialog id="verificationPanelDialog" class="tile-dialog listing-tool-dialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Needs confirmation</p>
+            <h2>Verification checklist</h2>
+          </div>
+          <button id="closeVerificationPanel" class="icon-btn" type="button" aria-label="Minimize verification checklist">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+        <div id="verificationChecklist" class="verification-list"></div>
+      </form>
+    </dialog>
+
+    <dialog id="previousWalkthroughDialog" class="tile-dialog listing-tool-dialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Saved walkthroughs</p>
+            <h2>Edit previous walkthroughs</h2>
+          </div>
+          <button id="closePreviousWalkthroughs" class="icon-btn" type="button" aria-label="Close saved walkthroughs">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+        <div id="previousWalkthroughList" class="previous-walkthrough-list"></div>
+      </form>
+    </dialog>
+
+    <dialog id="submitWalkthroughDialog" class="tile-dialog listing-tool-dialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Submit walkthrough</p>
+            <h2>Save, print, or export</h2>
+          </div>
+          <button id="closeSubmitWalkthrough" class="icon-btn" type="button" aria-label="Close submit options">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+        <p class="listing-guardrail-note">Autosave is on. In production, the CSV/PDF exports will be uploaded to the agent's Google Drive after Google Drive OAuth is connected.</p>
+        <div id="listingExportStatus" class="listing-export-status">Ready to save.</div>
+        <div class="dialog-actions">
+          <button id="printWalkthrough" class="secondary-btn" type="button">Print</button>
+          <button id="printPdfWalkthrough" class="secondary-btn" type="button">Print to PDF</button>
+          <button id="saveWalkthroughExport" class="primary-btn" type="button">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="settingsDialog" class="tile-dialog settings-dialog">
+      <div class="settings-shell">
+        <aside class="settings-sidebar" aria-label="Settings menu">
+          <button class="settings-tab active" type="button" data-settings-tab="profile">User Profile</button>
+          <button class="settings-tab" type="button" data-settings-tab="appearance">Appearance</button>
+          <button class="settings-tab" type="button" data-settings-tab="notifications">Notifications</button>
+          <button class="settings-tab" type="button" data-settings-tab="password">Password</button>
+          <button class="settings-tab admin-only is-hidden" type="button" data-settings-tab="access">Access</button>
+        </aside>
+
+        <section class="settings-content">
+          <div class="dialog-header">
+            <div>
+              <p class="eyebrow">Account</p>
+              <h2 id="settingsTitle">User Profile</h2>
+            </div>
+            <button id="closeSettingsModal" class="icon-btn" type="button" aria-label="Close settings">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
+          </div>
+
+          <form id="profileSettingsForm" class="settings-panel" data-settings-panel="profile">
+            <div class="profile-photo-row">
+              <div id="profilePhotoPreview" class="avatar profile-preview">AL</div>
+              <div>
+                <label for="profilePhoto">Profile picture</label>
+                <input id="profilePhoto" type="file" accept="image/*" />
+                <button id="clearProfilePhoto" class="secondary-btn clear-upload" type="button">Clear image</button>
+              </div>
+            </div>
+
+            <label for="profileName">Name</label>
+            <input id="profileName" type="text" required />
+
+            <label for="profileEmail">Email</label>
+            <input id="profileEmail" type="email" required />
+
+            <label for="profilePhone">Phone number</label>
+            <input id="profilePhone" type="tel" placeholder="(555) 555-5555" />
+
+            <label for="profileTitle">Title</label>
+            <input id="profileTitle" type="text" placeholder="Listing Specialist" />
+
+            <div class="dialog-actions">
+              <button class="primary-btn" type="submit">Save profile</button>
+            </div>
+          </form>
+
+          <form id="appearanceSettingsForm" class="settings-panel is-hidden" data-settings-panel="appearance">
+            <label for="themePalette">Team color theme</label>
+            <select id="themePalette">
+              <option value="black-white-gold">Black, white, and gold</option>
+              <option value="red-blue">Red and blue</option>
+              <option value="blue-white">Blue and white</option>
+              <option value="black-white">Black and white</option>
+              <option value="blue-orange">Blue and orange</option>
+              <option value="red-black-grey">Red, black, and grey</option>
+              <option value="red-white">Red and white</option>
+            </select>
+
+            <label for="themeMode">Display mode</label>
+            <select id="themeMode">
+              <option value="day">Daytime mode</option>
+              <option value="dark">Dark mode</option>
+            </select>
+
+            <div class="theme-preview" aria-label="Custom theme colors">
+              <label class="theme-swatch">
+                <span id="themeAccentSwatch"></span>
+                <small>Primary</small>
+                <input id="themeAccentColor" type="color" aria-label="Primary color" />
+              </label>
+              <label class="theme-swatch">
+                <span id="themeGoldSwatch"></span>
+                <small>Accent</small>
+                <input id="themeGoldColor" type="color" aria-label="Accent color" />
+              </label>
+              <label class="theme-swatch">
+                <span id="themePanelSwatch"></span>
+                <small>Panel</small>
+                <input id="themePanelColor" type="color" aria-label="Panel color" />
+              </label>
+            </div>
+
+            <div class="dialog-actions">
+              <button class="primary-btn" type="submit">Save appearance</button>
+            </div>
+          </form>
+
+          <form id="notificationSettingsForm" class="settings-panel is-hidden" data-settings-panel="notifications">
+            <label class="notification-toggle-row">
+              <span>
+                <strong>Push notifications</strong>
+                <small>Show alerts for new announcements, chat messages, and team updates.</small>
+              </span>
+              <span class="toggle-with-state">
+                <input id="pushNotifications" type="checkbox" />
+                <small id="pushNotificationState">Off</small>
+              </span>
+            </label>
+
+            <label class="notification-toggle-row">
+              <span>
+                <strong>Email notifications</strong>
+                <small>Send important hub updates and reminders by email.</small>
+              </span>
+              <span class="toggle-with-state">
+                <input id="emailNotifications" type="checkbox" />
+                <small id="emailNotificationState">Off</small>
+              </span>
+            </label>
+
+            <div class="dialog-actions">
+              <button class="primary-btn" type="submit">Save notifications</button>
+            </div>
+          </form>
+
+          <form id="passwordSettingsForm" class="settings-panel is-hidden" data-settings-panel="password">
+            <label for="loginEmail">Login email</label>
+            <input id="loginEmail" type="email" required />
+
+            <label for="currentPassword">Current password</label>
+            <input id="currentPassword" type="password" placeholder="Current password" />
+
+            <label for="newPassword">New password</label>
+            <input id="newPassword" type="password" placeholder="New password" />
+
+            <label for="confirmPassword">Confirm new password</label>
+            <input id="confirmPassword" type="password" placeholder="Confirm new password" />
+
+            <div class="dialog-actions">
+              <button class="primary-btn" type="submit">Update login</button>
+            </div>
+          </form>
+
+          <form id="accessSettingsForm" class="settings-panel is-hidden" data-settings-panel="access">
+            <label for="accessMemberType">Account type</label>
+            <select id="accessMemberType">
+              <option value="mentee">Mentee</option>
+              <option value="team">Team member</option>
+              <option value="upline">Upline agent</option>
+            </select>
+
+            <div id="accessFeatureList" class="access-feature-list" aria-label="Feature access toggles"></div>
+
+            <div class="dialog-actions">
+              <button class="primary-btn" type="submit">Apply now</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </dialog>
+
+    <script src="listing-intelligence-core.js?v=mobile-launch-1"></script>
+    <script src="app.js?v=mobile-launch-1"></script>
+  </body>
+</html>
