@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Listing intelligence">
+  <rect width="120" height="120" rx="18" fill="#edf7f6"/>
+  <path d="M22 53 60 24l38 29v43a5 5 0 0 1-5 5H27a5 5 0 0 1-5-5V53Z" fill="#0f766e"/>
+  <path d="M44 101V69h32v32" fill="#fff" opacity=".92"/>
+  <path d="M40 53h40M48 42h24" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="86" cy="30" r="13" fill="#c98721"/>
+  <path d="M82 30h8M86 26v8" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+</svg>
